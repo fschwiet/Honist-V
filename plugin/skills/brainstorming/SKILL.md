@@ -70,12 +70,14 @@ digraph brainstorming {
 - Prefer multiple choice questions when possible, but open-ended is fine too
 - Only one question per message - if a topic needs more exploration, break it into multiple questions
 - Focus on understanding: purpose, constraints, success criteria
+- If a key claim is cheaply testable then test it first.
 
 **Exploring approaches:**
 
-- Propose 2-3 different approaches with trade-offs
+- Propose 2-3 different approaches with their trade-offs
 - Present options conversationally with your recommendation and reasoning
 - Lead with your recommended option and explain why
+- Always indicate the tradeoffs of each approach. If there is no differentation in the tradeoffs its not a useful question.
 
 **Presenting the design:**
 
