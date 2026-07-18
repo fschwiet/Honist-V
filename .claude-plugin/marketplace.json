@@ -1,0 +1,14 @@
+{
+  "name": "honist-v",
+  "owner": {
+    "name": "fschwiet",
+    "url": "https://github.com/fschwiet"
+  },
+  "plugins": [
+    {
+      "name": "honist-v",
+      "source": "./plugin",
+      "description": "A Claude Code plugin."
+    }
+  ]
+}
