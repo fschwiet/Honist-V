@@ -143,7 +143,7 @@ If you find issues, fix them inline. No need to re-review — just fix and move 
 
 ## After Planning
 
-- Write the validated plan to `docs/superpowers/plans/YYYY-MM-DD-<feature-name>.md`
+- Write the validated plan to `docs/honist-v/plans/YYYY-MM-DD-<feature-name>.md`
   - (User preferences for spec location override this default)
 - Commit the plan document to git
 
@@ -151,4 +151,4 @@ If you find issues, fix them inline. No need to re-review — just fix and move 
 
 After saving the plan, let the user decide what to do next:
 
-**"Plan complete and saved to `docs/superpowers/plans/<filename>.md`. Consider clearing context before executing the plan**
+**"Plan complete and saved to `docs/honist-v/plans/<filename>.md`. Consider clearing context before executing the plan**
