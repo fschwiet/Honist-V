@@ -6,5 +6,6 @@
     "default": true,
     // Prettier owns wrapping (proseWrap: never), so don't enforce line length.
     "MD013": false,
+    "MD033": false, // in-line HTML allowed because agents like inline html
   },
 }
