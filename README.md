@@ -6,7 +6,7 @@ A Claude Code plugin.
 
 The plugin lives under [`plugin/`](plugin/) so that a Claude Code session started in this repository does **not** auto-discover its skills, commands, or agents (that would require them to sit under `.claude/`). Keeping them in `plugin/` lets you develop the plugin here without it activating on itself.
 
-```
+```text
 plugin/
 ├── .claude-plugin/
 │   └── plugin.json        # plugin manifest
@@ -21,7 +21,7 @@ The verification pipeline is linting only:
 
 ```bash
 pnpm install
-pnpm verify          # runs format:check + lint
+pnpm verify          # runs format:check + lint + lint:md
 ```
 
 Other useful scripts:
@@ -29,6 +29,7 @@ Other useful scripts:
 | Script              | Description                      |
 | ------------------- | -------------------------------- |
 | `pnpm lint`         | Run ESLint                       |
+| `pnpm lint:md`      | Lint Markdown with markdownlint  |
 | `pnpm format`       | Format all files with Prettier   |
 | `pnpm format:check` | Check formatting without writing |
 
