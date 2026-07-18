@@ -15,14 +15,14 @@ Write the test first. Watch it fail. Write minimal code to pass.
 
 ## When to Use
 
-**Always:**
+Always:
 
 - New features
 - Bug fixes
 - Refactoring
 - Behavior changes
 
-**Exceptions (ask your human partner):**
+Exceptions (ask your human partner):
 
 - Throwaway prototypes
 - Generated code
@@ -32,9 +32,7 @@ Thinking "skip TDD just this once"? Stop. That's rationalization.
 
 ## The Iron Law
 
-```
-NO PRODUCTION CODE WITHOUT A FAILING TEST FIRST
-```
+NO PRODUCTION CODE WITHOUT A FAILING TEST FIRST!
 
 Write code before the test? Delete it. Start over.
 
@@ -76,6 +74,7 @@ digraph tdd_cycle {
 Write one minimal test showing what should happen.
 
 <Good>
+
 ```typescript
 test('retries failed operations 3 times', async () => {
   let attempts = 0;
@@ -85,25 +84,28 @@ test('retries failed operations 3 times', async () => {
     return 'success';
   };
 
-const result = await retryOperation(operation);
+  const result = await retryOperation(operation);
 
-expect(result).toBe('success'); expect(attempts).toBe(3); });
+  expect(result).toBe('success');
+  expect(attempts).toBe(3);
+});
+```
 
-````
-Clear name, tests real behavior, one thing
-</Good>
+Clear name, tests real behavior, one thing </Good>
 
 <Bad>
+
 ```typescript
 test('retry works', async () => {
-  const mock = jest.fn()
+  const mock = jest
+    .fn()
     .mockRejectedValueOnce(new Error())
     .mockRejectedValueOnce(new Error())
     .mockResolvedValueOnce('success');
   await retryOperation(mock);
   expect(mock).toHaveBeenCalledTimes(3);
 });
-````
+```
 
 Vague name, tests mock not code </Bad>
 
@@ -211,7 +213,7 @@ Next failing test for next feature.
 
 ## Why Order Matters
 
-**"I'll write tests after to verify it works"**
+Antipattern: "I'll write tests after to verify it works"
 
 Tests written after code pass immediately. Passing immediately proves nothing:
 
@@ -222,7 +224,7 @@ Tests written after code pass immediately. Passing immediately proves nothing:
 
 Test-first forces you to see the test fail, proving it actually tests something.
 
-**"I already manually tested all the edge cases"**
+Antipattern: "I already manually tested all the edge cases"
 
 Manual testing is ad-hoc. You think you tested everything but:
 
@@ -233,7 +235,7 @@ Manual testing is ad-hoc. You think you tested everything but:
 
 Automated tests are systematic. They run the same way every time.
 
-**"Deleting X hours of work is wasteful"**
+Antipattern: "Deleting X hours of work is wasteful"
 
 Sunk cost fallacy. The time is already gone. Your choice now:
 
@@ -242,7 +244,7 @@ Sunk cost fallacy. The time is already gone. Your choice now:
 
 The "waste" is keeping code you can't trust. Working code without real tests is technical debt.
 
-**"TDD is dogmatic, being pragmatic means adapting"**
+Antipattern: "TDD is dogmatic, being pragmatic means adapting"
 
 TDD IS pragmatic:
 
@@ -253,7 +255,7 @@ TDD IS pragmatic:
 
 "Pragmatic" shortcuts = debugging in production = slower.
 
-**"Tests after achieve the same goals - it's spirit not ritual"**
+Antipattern: "Tests after achieve the same goals - it's spirit not ritual"
 
 No. Tests-after answer "What does this do?" Tests-first answer "What should this do?"
 
@@ -301,7 +303,7 @@ Tests-first force edge case discovery before implementing. Tests-after verify yo
 
 **Bug:** Empty email accepted
 
-**RED**
+### Step 1 - RED
 
 ```typescript
 test('rejects empty email', async () => {
@@ -310,14 +312,14 @@ test('rejects empty email', async () => {
 });
 ```
 
-**Verify RED**
+### Step 2 - Verify RED
 
 ```bash
 $ npm test
 FAIL: expected 'Email required', got undefined
 ```
 
-**GREEN**
+### Step 3 - GREEN
 
 ```typescript
 function submitForm(data: FormData) {
@@ -328,14 +330,16 @@ function submitForm(data: FormData) {
 }
 ```
 
-**Verify GREEN**
+### Step 4 - Verify GREEN
 
 ```bash
 $ npm test
 PASS
 ```
 
-**REFACTOR** Extract validation for multiple fields if needed.
+### Step 5 - REFACTOR
+
+Extract validation for multiple fields if needed.
 
 ## Verification Checklist
 
@@ -377,9 +381,9 @@ When adding mocks or test utilities, read [testing-anti-patterns.md](testing-ant
 
 ## Final Rule
 
-```
+<final-rule>
 Production code → test exists and failed first
 Otherwise → not TDD
-```
+</final-rule>
 
 No exceptions without your human partner's permission.

@@ -8,7 +8,7 @@ Use this template when dispatching a plan document reviewer subagent.
 
 ```yaml
 Subagent (general-purpose):
-  description: "Review plan document"
+  description: 'Review plan document'
   prompt: |
     You are a plan document reviewer. Verify this plan is complete and ready for implementation.
 

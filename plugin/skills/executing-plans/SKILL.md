@@ -46,11 +46,11 @@ After all tasks complete and verified:
 
 **Ask for clarification rather than guessing.**
 
+**Don't force through blockers** - stop and ask.
+
 ## When to Revisit Earlier Steps
 
-**Return to Review (Step 1) when partner updates the plan based on your feedback**
-
-**Don't force through blockers** - stop and ask.
+**Re-review the plan if it changes** Return to Review (Step 1) when partner updates the plan based on your feedback**
 
 ## Remember
 

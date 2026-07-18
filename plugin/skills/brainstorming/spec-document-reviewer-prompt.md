@@ -8,7 +8,7 @@ Use this template when dispatching a spec document reviewer subagent.
 
 ```yaml
 Subagent (general-purpose):
-  description: "Review spec document"
+  description: 'Review spec document'
   prompt: |
     You are a spec document reviewer. Verify this spec is complete and ready for planning.
 

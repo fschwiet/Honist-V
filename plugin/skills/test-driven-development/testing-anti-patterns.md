@@ -12,11 +12,11 @@ Tests must verify real behavior, not mock behavior. Mocks are a means to isolate
 
 ## The Iron Laws
 
-```
+<the-iron-laws>
 1. NEVER test mock behavior
 2. NEVER add test-only methods to production classes
 3. NEVER mock without understanding dependencies
-```
+</the-iron-laws>
 
 ## Anti-Pattern 1: Testing Mock Behavior
 
@@ -51,9 +51,9 @@ test('renders sidebar', () => {
 // Don't assert on the mock - test Page's behavior with sidebar present
 ```
 
-### Gate Function
+### Gate Function for Testing Mock Behavior
 
-```
+```pseudocode
 BEFORE asserting on any mock element:
   Ask: "Am I testing real component behavior or just mock existence?"
 
@@ -106,9 +106,9 @@ export async function cleanupSession(session: Session) {
 afterEach(() => cleanupSession(session));
 ```
 
-### Gate Function
+### Gate Function for Test-Only Methods in Production
 
-```
+```pseudocode
 BEFORE adding any method to production class:
   Ask: "Is this only used by tests?"
 
@@ -158,9 +158,9 @@ test('detects duplicate server', () => {
 });
 ```
 
-### Gate Function
+### Gate Function for Mocking Without Understanding
 
-```
+```pseudocode
 BEFORE mocking any method:
   STOP - Don't mock yet
 
@@ -222,7 +222,7 @@ const mockResponse = {
 
 ### Gate Function
 
-```
+```pseudocode
 BEFORE creating mock responses:
   Check: "What fields does the real API response contain?"
 
@@ -242,11 +242,11 @@ BEFORE creating mock responses:
 
 **The violation:**
 
-```
+<violation-example>
 ✅ Implementation complete
 ❌ No tests written
 "Ready for testing"
-```
+</violation-example>
 
 **Why this is wrong:**
 
@@ -256,13 +256,13 @@ BEFORE creating mock responses:
 
 **The fix:**
 
-```
+<the-fix>
 TDD cycle:
 1. Write failing test
 2. Implement to pass
 3. Refactor
 4. THEN claim complete
-```
+</the-fix>
 
 ## When Mocks Become Too Complex
 
