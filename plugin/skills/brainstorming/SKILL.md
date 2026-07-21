@@ -27,8 +27,9 @@ You MUST create a task for each of these items and complete them in order:
 4. **Present design** — in sections scaled to their complexity, get user approval after each section
 5. **Write design doc** — save to `docs/honist-v/specs/YYYY-MM-DD-<topic>-design.md` and commit
 6. **Spec self-review** — quick inline check for placeholders, contradictions, ambiguity, scope (see below)
-7. **User reviews written spec** — ask user to review the spec file before proceeding
-8. **Transition to implementation** — invoke writing-plans skill to create implementation plan
+7. **Codex review** — ask codex to review the committed spec, fix clear issues
+8. **User reviews written spec** — ask user to review the spec file before proceeding
+9. **Transition to implementation** — invoke writing-plans skill to create implementation plan
 
 ## Process Flow
 
@@ -40,7 +41,12 @@ digraph brainstorming {
     "Present design sections" [shape=box];
     "User approves design?" [shape=diamond];
     "Write design doc" [shape=box];
-    "Spec self-review\n(fix inline)" [shape=box];
+    "Spec self-review\n(fix + commit inline)" [shape=box];
+    "Codex reviews spec" [shape=box];
+    "Clear issues?" [shape=diamond];
+    "Certain fix?" [shape=diamond];
+    "Propose 2-3 fixes" [shape=box];
+    "Substantial changes?" [shape=diamond];
     "User reviews spec?" [shape=diamond];
     "Invoke writing-plans skill" [shape=doublecircle];
 
@@ -50,9 +56,17 @@ digraph brainstorming {
     "Present design sections" -> "User approves design?";
     "User approves design?" -> "Present design sections" [label="no, revise"];
     "User approves design?" -> "Write design doc" [label="yes"];
-    "Write design doc" -> "Spec self-review\n(fix inline)";
-    "Spec self-review\n(fix inline)" -> "User reviews spec?";
-    "User reviews spec?" -> "Write design doc" [label="changes requested"];
+    "Write design doc" -> "Spec self-review\n(fix + commit inline)";
+    "Spec self-review\n(fix + commit inline)" -> "Codex reviews spec";
+    "Codex reviews spec" -> "Clear issues?";
+    "Clear issues?" -> "User reviews spec?" [label="no\n(report discarded feedback)"];
+    "Clear issues?" -> "Certain fix?" [label="yes"];
+    "Certain fix?" -> "Substantial changes?" [label="yes, fix + commit inline"];
+    "Certain fix?" -> "Propose 2-3 fixes" [label="no"];
+    "Propose 2-3 fixes" -> "Substantial changes?";
+    "Substantial changes?" -> "Spec self-review\n(fix + commit inline)" [label="yes"];
+    "Substantial changes?" -> "User reviews spec?" [label="no"];
+    "User reviews spec?" -> "Spec self-review\n(fix + commit inline)" [label="changes requested"];
     "User reviews spec?" -> "Invoke writing-plans skill" [label="approved"];
 }
 ```
@@ -77,7 +91,7 @@ digraph brainstorming {
 - Propose 2-3 different approaches with their trade-offs
 - Present options conversationally with your recommendation and reasoning
 - Lead with your recommended option and explain why
-- Always indicate the tradeoffs of each approach. If there is no differentation in the tradeoffs its not a useful question.
+- Always indicate the tradeoffs of each approach. If there is no differentiation in the tradeoffs its not a useful question.
 
 **Presenting the design:**
 
@@ -115,13 +129,28 @@ digraph brainstorming {
 3. **Scope check:** Is this focused enough for a single implementation plan, or does it need decomposition?
 4. **Ambiguity check:** Could any requirement be interpreted two different ways? If so, pick one and make it explicit.
 
-Fix any issues inline. No need to re-review — just fix and move on.
+Fix any issues inline. No need to re-review — just commit the fixes and move on.
+
+**Codex Review:** After the spec self-review passes and changes have been committed, ask codex to review the spec. If codex reviewed an earlier version of the spec ask it to review the changes. Give codex a long timeout (10 minutes).
+
+- For feedback that points to a clear issue with a certain fix go ahead and commit the fix inline.
+- Tell the user about feedback that did not indicate a clear issue and is being discarded.
+- Go to **Propose 2-3 fixes** to explore fixes for clear issues without a certain fix, otherwise skip to **User Review Gate**.
+
+**Propose 2-3 fixes** For each clear issue without a certain fix:
+
+- Propose 2-3 different fixes with their trade-offs.
+- Present options conversationally with your recommendation and reasoning.
+- Lead with your recommended option and explain why.
+- Always indicate the tradeoffs of each approach. If there is no differentiation in the tradeoffs then also explain why the solution to the fix is uncertain.
+
+Fix and commit issues inline. If there were substantial changes made return to **Spec Self-Review** otherwise continue to **User Review Gate**.
 
 **User Review Gate:** After the spec review loop passes, ask the user to review the written spec before proceeding:
 
 > "Spec written and committed to `<path>`. Please review it and let me know if you want to make any changes before we start writing out the implementation plan."
 
-Wait for the user's response. If they request changes, make them and re-run the spec review loop. Only proceed once the user approves.
+Wait for the user's response. If they request changes, make them and return to **Spec Self-Review**. Only proceed once the user approves.
 
 **Implementation:**
 
