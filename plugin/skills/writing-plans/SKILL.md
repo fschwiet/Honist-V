@@ -144,7 +144,6 @@ If you find issues, fix them inline. No need to re-review — just fix and move 
 ## After Planning
 
 - Write the validated plan to `docs/honist-v/plans/YYYY-MM-DD-<feature-name>.md`
-  - (User preferences for spec location override this default)
 - Commit the plan document to git
 
 ## Execution Handoff

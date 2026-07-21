@@ -119,7 +119,6 @@ digraph brainstorming {
 **Documentation:**
 
 - Write the validated design (spec) to `docs/honist-v/specs/YYYY-MM-DD-<topic>-design.md`
-  - (User preferences for spec location override this default)
 - Commit the design document to git
 
 **Spec Self-Review:** After writing the spec document, look at it with fresh eyes:
