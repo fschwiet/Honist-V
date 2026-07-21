@@ -129,6 +129,11 @@ Every step must contain the actual content an engineer needs. These are **plan f
 - Exact commands with expected output
 - DRY, YAGNI, TDD, frequent commits
 
+## Saving the Plan
+
+- Write the plan to `docs/honist-v/plans/YYYY-MM-DD-<feature-name>.md`
+- Commit the plan document to git
+
 ## Self-Review
 
 After writing the complete plan, look at the spec with fresh eyes and check the plan against it. This is a checklist you run yourself — not a subagent dispatch.
@@ -139,15 +144,27 @@ After writing the complete plan, look at the spec with fresh eyes and check the 
 
 **3. Type consistency:** Do the types, method signatures, and property names you used in later tasks match what you defined in earlier tasks? A function called `clearLayers()` in Task 3 but `clearFullLayers()` in Task 7 is a bug.
 
-If you find issues, fix them inline. No need to re-review — just fix and move on. If you find a spec requirement with no task, add the task and in this case re-review.
+If you find issues, fix them inline. No need to re-review — just commit the fixes and move on. If you find a spec requirement with no task, add the task and in this case re-review.
 
-## After Planning
+## Codex Review
 
-- Write the validated plan to `docs/honist-v/plans/YYYY-MM-DD-<feature-name>.md`
-- Commit the plan document to git
+After the self-review passes and changes have been committed, ask codex to review the plan (give it the spec for reference). If codex reviewed an earlier version of the plan ask it to review the changes. Give codex a long timeout (10 minutes).
+
+- For feedback that points to a clear issue with a certain fix go ahead and commit the fix inline.
+- Tell the user about feedback that did not indicate a clear issue and is being discarded.
+- Go to **Propose 2-3 fixes** to explore fixes for clear issues without a certain fix, otherwise skip to **Execution Handoff**.
+
+**Propose 2-3 fixes** For each clear issue without a certain fix:
+
+- Propose 2-3 different fixes with their trade-offs.
+- Present options conversationally with your recommendation and reasoning.
+- Lead with your recommended option and explain why.
+- Always indicate the tradeoffs of each approach. If there is no differentiation in the tradeoffs then also explain why the solution to the fix is uncertain.
+
+Fix and commit issues inline. If there were substantial changes made return to **Self-Review** otherwise continue to **Execution Handoff**.
 
 ## Execution Handoff
 
-After saving the plan, let the user decide what to do next:
+After the plan is saved and reviewed, let the user decide what to do next:
 
-**"Plan complete and saved to `docs/honist-v/plans/<filename>.md`. Consider clearing context before executing the plan**
+**"Plan complete and saved to `docs/honist-v/plans/<filename>.md`. Consider clearing context before executing the plan"**
