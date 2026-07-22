@@ -130,7 +130,7 @@ digraph brainstorming {
 
 Fix any issues inline. No need to re-review — just commit the fixes and move on.
 
-**Codex Review:** After the spec self-review passes and changes have been committed, ask codex to review the spec. If codex reviewed an earlier version of the spec ask it to review the changes. Give codex a long timeout (10 minutes).
+**Codex Review:** (If you are codex, skip to **User Review Gate**) After the spec self-review passes and changes have been committed, ask codex to review the spec. If codex reviewed an earlier version of the spec ask it to review the changes. Give codex a long timeout (10 minutes).
 
 - For feedback that points to a clear issue with a certain fix go ahead and commit the fix inline.
 - Tell the user about feedback that did not indicate a clear issue and is being discarded.

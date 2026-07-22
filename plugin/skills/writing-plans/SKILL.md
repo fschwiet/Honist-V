@@ -148,6 +148,8 @@ If you find issues, fix them inline. No need to re-review — just commit the fi
 
 ## Codex Review
 
+(If you are codex, go directly to **Execution Handoff**)
+
 After the self-review passes and changes have been committed, ask codex to review the plan (give it the spec for reference). If codex reviewed an earlier version of the plan ask it to review the changes. Give codex a long timeout (10 minutes).
 
 - For feedback that points to a clear issue with a certain fix go ahead and commit the fix inline.
